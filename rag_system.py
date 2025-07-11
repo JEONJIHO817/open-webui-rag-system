@@ -192,7 +192,7 @@ def ask_question(qa_chain, question):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="RAG refine system (페이지 번호 지원)")
-    parser.add_argument("--vector_store", type=str, default="faiss_index_pymupdf", help="벡터 스토어 경로")
+    parser.add_argument("--vector_store", type=str, default="vector_db", help="벡터 스토어 경로")
     parser.add_argument("--model", type=str, default="LGAI-EXAONE/EXAONE-3.5-7.8B-Instruct", help="LLM 모델 ID")
     parser.add_argument("--device", type=str, default="cuda", choices=["cuda", "cpu"], help="사용할 디바이스")
     parser.add_argument("--k", type=int, default=7, help="검색할 문서 수")

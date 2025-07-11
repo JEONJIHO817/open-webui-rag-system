@@ -22,7 +22,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # 전역 객체 준비
 embeddings = get_embeddings(device="cpu")
-vectorstore = load_vector_store(embeddings, load_path="faiss_index_800image_test")
+vectorstore = load_vector_store(embeddings, load_path="vector_db")
 llm = load_llama_model()
 qa_chain = build_rag_chain(llm, vectorstore, language="ko", k=7)
 

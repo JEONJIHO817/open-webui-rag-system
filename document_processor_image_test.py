@@ -427,11 +427,11 @@ if __name__ == "__main__":
     )
 
     vectorstore = FAISS.from_documents(chunks, embedding_model)
-    vectorstore.save_local("faiss_index_pymupdf_81")
+    vectorstore.save_local("vector_db")
 
     log(f"📊 전체 문서 수: {len(docs)}")
     log(f"🔗 청크 총 수: {len(chunks)}")
-    log("✅ FAISS 저장 완료: faiss_index_pymupdf_81")
+    log("✅ FAISS 저장 완료: vector_db")
     
     # 페이지 정보가 포함된 샘플 출력
     log("\n📋 실제 페이지 정보 포함 샘플:")

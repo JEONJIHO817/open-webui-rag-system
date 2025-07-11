@@ -24,7 +24,7 @@ def get_embeddings(model_name="intfloat/multilingual-e5-large-instruct", device=
         encode_kwargs={'normalize_embeddings': True}
     )
 
-def build_vector_store_batch(documents, embeddings, save_path="faiss_index", batch_size=16):
+def build_vector_store_batch(documents, embeddings, save_path="vector_db", batch_size=16):
     if not documents:
         raise ValueError("문서가 없습니다. 문서가 올바르게 로드되었는지 확인하세요.")
 
@@ -74,7 +74,7 @@ def build_vector_store_batch(documents, embeddings, save_path="faiss_index", bat
 
     return vectorstore
 
-def load_vector_store(embeddings, load_path="faiss_index"):
+def load_vector_store(embeddings, load_path="vector_db"):
     if not os.path.exists(load_path):
         raise FileNotFoundError(f"벡터 스토어를 찾을 수 없습니다: {load_path}")
     return FAISS.load_local(load_path, embeddings, allow_dangerous_deserialization=True)
@@ -83,7 +83,7 @@ def load_vector_store(embeddings, load_path="faiss_index"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="벡터 스토어 구축")
     parser.add_argument("--folder", type=str, default="dataset", help="문서가 있는 폴더 경로")
-    parser.add_argument("--save_path", type=str, default="faiss_index", help="벡터 스토어 저장 경로")
+    parser.add_argument("--save_path", type=str, default="vector_db", help="벡터 스토어 저장 경로")
     parser.add_argument("--batch_size", type=int, default=16, help="배치 크기")
     parser.add_argument("--model_name", type=str, default="intfloat/multilingual-e5-large-instruct", help="임베딩 모델 이름")
     parser.add_argument("--device", type=str, default="cuda", help="사용할 디바이스 ('cuda' 또는 'cpu')")

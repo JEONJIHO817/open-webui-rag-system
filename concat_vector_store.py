@@ -8,7 +8,7 @@ from document_processor_image import load_documents, split_documents  # 반드�
 # 경로 설정
 NEW_FOLDER = "25.05.28 RAG용 2차 업무편람 취합본"
 #NEW_FOLDER = "임시"
-VECTOR_STORE_PATH = "faiss_index_800image"
+VECTOR_STORE_PATH = "vector_db"
 
 # 1. 임베딩 모델 로딩
 def get_embeddings(model_name="intfloat/multilingual-e5-large-instruct", device="cuda"):
@@ -19,7 +19,7 @@ def get_embeddings(model_name="intfloat/multilingual-e5-large-instruct", device=
     )
 
 # 2. 기존 벡터 스토어 로드
-def load_vector_store(embeddings, load_path="faiss_index_800image"):
+def load_vector_store(embeddings, load_path="vector_db"):
     if not os.path.exists(load_path):
         raise FileNotFoundError(f"벡터 스토어를 찾을 수 없습니다: {load_path}")
     return FAISS.load_local(load_path, embeddings, allow_dangerous_deserialization=True)

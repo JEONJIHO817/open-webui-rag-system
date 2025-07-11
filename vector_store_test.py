@@ -26,7 +26,7 @@ def get_embeddings(model_name="intfloat/multilingual-e5-large-instruct", device=
         encode_kwargs={'normalize_embeddings': True}
     )
 
-def build_vector_store_batch(documents, embeddings, save_path="faiss_index_pymupdf_81", batch_size=4):
+def build_vector_store_batch(documents, embeddings, save_path="vector_db", batch_size=4):
     if not documents:
         raise ValueError("문서가 없습니다. 문서가 올바르게 로드되었는지 확인하세요.")
 
@@ -81,7 +81,7 @@ def build_vector_store_batch(documents, embeddings, save_path="faiss_index_pymup
 
     return vectorstore
 
-def load_vector_store(embeddings, load_path="faiss_index_pymupdf_81"):
+def load_vector_store(embeddings, load_path="vector_db"):
     if not os.path.exists(load_path):
         raise FileNotFoundError(f"벡터 스토어를 찾을 수 없습니다: {load_path}")
     return FAISS.load_local(load_path, embeddings, allow_dangerous_deserialization=True)

@@ -7,7 +7,7 @@ from document_processor import load_pdf_with_pymupdf, split_documents
 
 # 경로 설정
 FOLDER = "25.05.28 RAG용 2차 업무편람 취합본"
-VECTOR_STORE_PATH = "faiss_index"
+VECTOR_STORE_PATH = "vector_db"
 
 # 1. 임베딩 모델 로드
 def get_embeddings(model_name="intfloat/multilingual-e5-large-instruct", device="cuda"):
