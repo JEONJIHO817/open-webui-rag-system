@@ -1,0 +1,8 @@
+vector_db/
+*.index
+*.faiss
+*.pkl
+*.pdf
+*.faiss
+*.pkl
+*.hwpx
